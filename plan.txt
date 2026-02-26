@@ -1,0 +1,37 @@
+# Philosophers — Gesamtplan (7 Tage)
+
+## Phase 1: Theorie (Tag 1-2)
+1. Was ist ein Prozess, was ist ein Thread, Unterschied
+2. Was ist parallele/konkurrierende Ausführung
+3. Was ist eine Race Condition — warum passiert das
+4. Was ist ein Mutex — wie löst er Race Conditions
+5. Das Dining Philosophers Problem selbst — Deadlock-Szenario verstehen
+6. Erlaubte Funktionen verstehen: `pthread_create`, `pthread_join`, `pthread_mutex_init/lock/unlock/destroy`, `gettimeofday`, `usleep`, `malloc`, `free`, `write`
+
+## Phase 2: Architektur (Tag 2-3)
+7. Structs designen — was muss ein Philo wissen, was ist global
+8. Fork-Zuordnung — welcher Philo teilt welche Gabel mit wem
+9. Programmablauf skizzieren: Init → Threads starten → Routine läuft → Monitor checkt Tod → Cleanup
+
+## Phase 3: Implementierung (Tag 3-5)
+10. Argument-Parsing + Validierung
+11. Initialisierung (Structs, Mutexes, Philos)
+12. Zeitfunktionen: `get_time()` und eigene `ft_usleep()`
+13. Philo-Routine: eat → sleep → think Loop
+14. Fork-Locking Logik (Deadlock-Prevention)
+15. Print-Funktion mit Mutex-geschütztem Output
+16. Death-Monitor: separater Check ob jemand verhungert ist
+17. Stop-Condition: alle haben genug gegessen
+18. Cleanup: Mutexes destroyen, Memory freeen
+
+## Phase 4: Testing + Hardening (Tag 6)
+19. Edge Case: 1 Philosopher (muss sterben)
+20. Edge Case: 2 Philosophers
+21. Timing-Tests (`4 410 200 200`, `5 800 200 200`)
+22. ThreadSanitizer laufen lassen (`-fsanitize=thread`)
+23. Auf Linux testen
+
+## Phase 5: Eval-Prep (Tag 7)
+24. Jeden Konzept-Begriff in eigenen Worten erklären können
+25. Für jede Codezeile wissen: warum steht die da, was passiert wenn ich sie weglasse
+26. Typische Eval-Fragen durchgehen
